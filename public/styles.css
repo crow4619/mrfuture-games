@@ -67,6 +67,7 @@ img {
   width: min(49.5%, 38.3125rem);
   height: auto;
   filter: drop-shadow(0 14px 24px rgba(4, 2, 12, 0.44));
+  transform: translate3d(0, 0, 0);
   transform-origin: center;
 }
 
@@ -79,9 +80,11 @@ img {
 
 .game-section h2 {
   margin: 0 0 1.2rem;
+  opacity: 1;
   font-size: clamp(0.9rem, 1.25vw, 1.5rem);
   font-weight: 500;
   line-height: 1.2;
+  transform: translate3d(0, 0, 0);
 }
 
 .game-card {
@@ -99,7 +102,8 @@ img {
   border: clamp(2px, 0.21vw, 4px) solid var(--card-border);
   border-radius: clamp(0.8rem, 1.12vw, 1.35rem);
   box-shadow: 0 7px 7px rgba(0, 0, 0, 0.5);
-  transform: translateZ(0);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
   transition:
     transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 260ms ease,
@@ -163,6 +167,8 @@ img {
   height: auto;
   max-height: 42%;
   object-fit: contain;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .game-description {
@@ -172,6 +178,8 @@ img {
   font-size: clamp(0.75rem, 1.12vw, 1.34rem);
   font-weight: 400;
   line-height: 1.2;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .game-cta {
@@ -189,6 +197,8 @@ img {
   background: var(--accent);
   border-radius: 999px;
   box-shadow: 0 0 0 rgba(255, 65, 184, 0);
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
   transition:
     background-color 180ms ease,
     box-shadow 180ms ease,
@@ -198,7 +208,7 @@ img {
 .game-card:hover {
   border-color: #6aa7c0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), 0 0 22px rgba(69, 164, 211, 0.16);
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0) scale(1);
 }
 
 .game-card:hover .game-preview img {
@@ -211,11 +221,11 @@ img {
 }
 
 .game-card:active {
-  transform: translateY(-1px) scale(0.998);
+  transform: translate3d(0, -1px, 0) scale(0.998);
 }
 
 .game-card:active .game-cta {
-  transform: scale(0.98);
+  transform: translate3d(0, 0, 0) scale(0.98);
 }
 
 .portal-footer {
@@ -333,48 +343,48 @@ img {
 @keyframes logo-intro {
   0%,
   28% {
-    transform: translateY(calc(50svh - var(--logo-top) - 50%));
+    transform: translate3d(0, calc(50svh - var(--logo-top) - 50%), 0);
   }
 
   78%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes section-heading-intro {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translate3d(0, 12px, 0);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes card-intro {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.97);
+    transform: translate3d(0, 24px, 0) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 @keyframes card-content-intro {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translate3d(0, 10px, 0);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 

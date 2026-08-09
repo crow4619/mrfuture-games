@@ -4,14 +4,18 @@ if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
-const introLogo = document.querySelector(".studio-logo");
+const introRoot = document.querySelector(".is-intro");
 
-if (introLogo) {
-  const finishIntro = () => document.body.classList.remove("is-intro");
+if (introRoot) {
+  const finishIntro = () => introRoot.classList.remove("is-intro");
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     finishIntro();
   } else {
-    introLogo.addEventListener("animationend", finishIntro, { once: true });
+    const introAnimations = document
+      .getAnimations()
+      .filter((animation) => animation.effect?.target?.closest(".is-intro"));
+
+    Promise.allSettled(introAnimations.map((animation) => animation.finished)).then(finishIntro);
   }
 }
