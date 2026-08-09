@@ -4,6 +4,9 @@
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   background-color: #160f2b;
+  --accent: #cb2190;
+  --card-border: #558498;
+  --logo-top: clamp(2rem, 5.56svh, 3.75rem);
 }
 
 *,
@@ -19,14 +22,13 @@ html {
 }
 
 body {
-  position: relative;
   min-height: 100svh;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   color: #fff;
   background:
-    linear-gradient(rgba(12, 7, 27, 0.18), rgba(12, 7, 27, 0.3)),
-    url("/assets/background.png") center / cover no-repeat;
+    linear-gradient(rgba(15, 8, 24, 0.5), rgba(15, 8, 24, 0.5)),
+    url("/assets/background.png") center / cover fixed;
 }
 
 body::before {
@@ -35,44 +37,225 @@ body::before {
   z-index: 0;
   content: "";
   pointer-events: none;
-  background: radial-gradient(circle at center, rgba(129, 33, 129, 0.12), rgba(9, 5, 21, 0.28) 78%);
+  background: radial-gradient(circle at 50% 38%, transparent 28%, rgba(6, 2, 18, 0.2) 100%);
 }
 
-.landing-page {
+.studio-portal {
   position: relative;
   z-index: 1;
-  display: grid;
-  min-height: 100svh;
-  padding: 3rem 1.5rem 5.5rem;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100svh - 34px);
+  padding: var(--logo-top) 1.5rem 0;
 }
 
 .studio-logo {
+  position: relative;
+  z-index: 3;
   display: block;
-  width: min(78vw, 690px);
+  width: min(31.92vw, 613px);
+  min-width: 300px;
   height: auto;
-  filter: drop-shadow(0 18px 30px rgba(4, 2, 12, 0.46));
-  animation: logo-enter 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  filter: drop-shadow(0 14px 24px rgba(4, 2, 12, 0.44));
+  transform-origin: center;
+}
+
+.game-section {
+  width: min(64.48vw, 1238px);
+  margin-top: clamp(2.75rem, 6.95svh, 4.7rem);
+  text-align: center;
+}
+
+.game-section h2 {
+  margin: 0 0 1.2rem;
+  font-size: clamp(0.9rem, 1.25vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.game-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1236 / 409;
+  color: #fff;
+  text-decoration: none;
+  background: #04002a;
+  border: clamp(2px, 0.21vw, 4px) solid var(--card-border);
+  border-radius: clamp(0.8rem, 1.12vw, 1.35rem);
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.5);
+  transform: translateZ(0);
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.game-preview,
+.game-details {
+  display: block;
+  min-width: 0;
+}
+
+.game-preview {
+  overflow: hidden;
+}
+
+.game-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.game-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.65rem, 1.2vw, 1.45rem);
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.4vw, 2.85rem) clamp(1.5rem, 3.2vw, 3.85rem);
+  isolation: isolate;
+}
+
+.game-details::before,
+.game-details::after {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+}
+
+.game-details::before {
+  background: url("/assets/cozy-cockpit-card-background.png") 50% 64% / 210% auto no-repeat;
+}
+
+.game-details::after {
+  z-index: -1;
+  background: linear-gradient(90deg, #000b28 0%, rgba(0, 11, 40, 0.2) 68%, rgba(0, 11, 40, 0.06));
+}
+
+.game-logo {
+  display: block;
+  width: min(100%, 490px);
+  height: auto;
+}
+
+.game-description {
+  max-width: 32rem;
+  font-size: clamp(0.78rem, 1.12vw, 1.34rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.game-cta {
+  display: grid;
+  width: min(65%, 319px);
+  min-height: clamp(2.5rem, 3.3vw, 3.96rem);
+  padding: 0.45rem 1rem;
+  place-items: center;
+  color: #fff;
+  font-size: clamp(0.88rem, 1.4vw, 1.68rem);
+  font-weight: 700;
+  line-height: 1;
+  background: var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 0 0 rgba(255, 65, 184, 0);
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.game-card:hover {
+  border-color: #6aa7c0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), 0 0 22px rgba(69, 164, 211, 0.16);
+  transform: translateY(-4px);
+}
+
+.game-card:hover .game-preview img {
+  transform: scale(1.015);
+}
+
+.game-card:hover .game-cta {
+  background: #df2da1;
+  box-shadow: 0 0 20px rgba(223, 45, 161, 0.3);
+}
+
+.game-card:active {
+  transform: translateY(-1px) scale(0.998);
+}
+
+.game-card:active .game-cta {
+  transform: scale(0.98);
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.05rem;
+  margin-top: auto;
+  margin-bottom: 1.4rem;
+  padding: 1rem 1.5rem 0.7rem;
+  color: #fff;
+  font-size: clamp(0.74rem, 1.04vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 2px 10px rgba(5, 2, 15, 0.72);
+}
+
+.contact-link img {
+  display: block;
+  width: clamp(1.4rem, 1.88vw, 2.25rem);
+  height: auto;
+  transition: transform 180ms ease;
+}
+
+.contact-link::after {
+  width: 2.25rem;
+  height: 2px;
+  content: "";
+  background: var(--accent);
+  transform: scaleX(1);
+  transition: transform 180ms ease;
+}
+
+.contact-link:hover img {
+  transform: translateY(-2px);
+}
+
+.contact-link:hover::after {
+  transform: scaleX(1.35);
+}
+
+.game-card:focus-visible,
+.contact-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
 }
 
 .site-footer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  padding: 1rem 1.25rem max(1rem, env(safe-area-inset-bottom));
+  position: relative;
+  z-index: 1;
+  min-height: 34px;
+  padding: 0.3rem 1.25rem max(0.55rem, env(safe-area-inset-bottom));
   text-align: center;
 }
 
 .site-footer p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(5, 2, 15, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.55rem, 0.63vw, 0.75rem);
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .visually-hidden {
@@ -87,10 +270,69 @@ body::before {
   border: 0;
 }
 
-@keyframes logo-enter {
+.is-intro .studio-logo {
+  animation: logo-intro 1.8s cubic-bezier(0.22, 0.78, 0.18, 1) both;
+}
+
+.is-intro .game-section h2 {
+  animation: section-heading-intro 620ms 1.03s cubic-bezier(0.2, 0.82, 0.24, 1) both;
+}
+
+.is-intro .game-card {
+  animation: card-intro 720ms 1.12s cubic-bezier(0.18, 0.86, 0.24, 1.08) both;
+}
+
+.is-intro .game-logo,
+.is-intro .game-description,
+.is-intro .game-cta {
+  animation: card-content-intro 520ms cubic-bezier(0.2, 0.82, 0.24, 1) both;
+}
+
+.is-intro .game-logo {
+  animation-delay: 1.28s;
+}
+
+.is-intro .game-description {
+  animation-delay: 1.38s;
+}
+
+.is-intro .game-cta {
+  animation-delay: 1.48s;
+}
+
+.is-intro .contact-link,
+.is-intro .site-footer {
+  animation: quiet-intro 420ms 1.5s ease-out both;
+}
+
+@keyframes logo-intro {
+  0%,
+  28% {
+    transform: translateY(calc(50svh - var(--logo-top) - 50%));
+  }
+
+  78%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-heading-intro {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.985);
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-intro {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
   }
 
   to {
@@ -99,22 +341,122 @@ body::before {
   }
 }
 
-@media (max-width: 600px) {
-  .landing-page {
+@keyframes card-content-intro {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes quiet-intro {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --logo-top: 2rem;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+
+  .studio-portal {
+    min-height: calc(100svh - 38px);
     padding-inline: 1rem;
   }
 
   .studio-logo {
-    width: min(90vw, 553px);
+    width: min(74vw, 500px);
+    min-width: 0;
   }
 
-  .site-footer p {
-    font-size: 0.68rem;
+  .game-section {
+    width: min(92vw, 680px);
+    margin-top: clamp(2.25rem, 7svh, 3.5rem);
+  }
+
+  .game-section h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .game-card {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+  }
+
+  .game-preview {
+    aspect-ratio: 1658 / 925;
+  }
+
+  .game-details {
+    min-height: 280px;
+    padding: 2rem clamp(1.25rem, 8vw, 3rem);
+  }
+
+  .game-details::before {
+    background-position: 50% 66%;
+    background-size: cover;
+  }
+
+  .game-logo {
+    width: min(90%, 420px);
+  }
+
+  .game-description {
+    font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+  }
+
+  .game-cta {
+    width: min(82%, 280px);
+    min-height: 3rem;
+    font-size: 1rem;
+  }
+
+  .contact-link {
+    margin-top: 3.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .studio-logo {
+    width: min(88vw, 410px);
+  }
+
+  .game-section {
+    width: 94vw;
+    margin-top: 2.3rem;
+  }
+
+  .game-details {
+    min-height: 240px;
+    gap: 0.9rem;
+    padding: 1.65rem 1.2rem;
+  }
+
+  .contact-link {
+    margin-top: 2rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .studio-logo {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
   }
 }
