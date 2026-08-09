@@ -416,16 +416,26 @@ img {
 
   .game-card {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "info"
+      "image";
     aspect-ratio: auto;
   }
 
   .game-preview {
-    aspect-ratio: 1658 / 925;
+    grid-area: image;
+    aspect-ratio: 16 / 9;
+  }
+
+  .game-preview img {
+    object-position: 50% 48%;
   }
 
   .game-details {
-    min-height: clamp(15rem, 65vw, 20rem);
-    padding: 2rem clamp(1.25rem, 8vw, 3rem);
+    grid-area: info;
+    min-height: 0;
+    gap: clamp(0.75rem, 2.8vw, 0.95rem);
+    padding: clamp(1.5rem, 5vw, 2rem) clamp(1.25rem, 8vw, 3rem);
   }
 
   .game-details::before {
@@ -434,7 +444,7 @@ img {
   }
 
   .game-logo {
-    width: min(90%, 26.25rem);
+    width: min(82%, 22rem);
     max-height: none;
   }
 
@@ -464,9 +474,9 @@ img {
   }
 
   .game-details {
-    min-height: 15rem;
+    min-height: 0;
     gap: 0.9rem;
-    padding: 1.65rem 1.2rem;
+    padding: 1.5rem 1.2rem;
   }
 
   .portal-footer {
