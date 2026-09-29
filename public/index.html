@@ -23,7 +23,7 @@
     <link rel="icon" href="/favicon.png?v=figma-3" type="image/png" sizes="64x64" />
     <link rel="preload" href="/assets/background.png" as="image" />
     <link rel="preload" href="/assets/mrfuturegames-logo.png?v=figma-1" as="image" />
-    <link rel="stylesheet" href="/styles.css?v=social-1" />
+    <link rel="stylesheet" href="/styles.css?v=cozy-brand-3" />
     <script src="/script.js" defer></script>
   </head>
   <body class="is-intro">
@@ -41,34 +41,52 @@
       <section class="game-section" aria-labelledby="games-heading">
         <h2 id="games-heading">OUR GAME</h2>
 
-        <a
-          class="game-card"
-          href="https://www.cozycockpit.com"
-          aria-label="Visit the Cozy Cockpit website"
-        >
-          <div class="game-preview">
+        <article class="game-card" aria-labelledby="cozy-cockpit-title">
+          <a
+            class="game-artwork"
+            href="https://store.steampowered.com/app/5251280/Cozy_Cockpit/"
+            aria-label="Explore Cozy Cockpit on Steam"
+          >
             <img
-              src="/assets/cozy-cockpit-screenshot.png"
-              width="1658"
-              height="925"
-              alt="A pixel-art aircraft cockpit flying above a coastal landscape in Cozy Cockpit"
+              class="game-landscape"
+              src="/assets/cozy-cockpit/landscape.webp"
+              width="1100"
+              height="368"
+              alt=""
             />
-          </div>
+            <img
+              class="game-clouds"
+              src="/assets/cozy-cockpit/clouds.webp"
+              width="1100"
+              height="368"
+              alt=""
+            />
+            <div class="game-brand">
+              <h3 id="cozy-cockpit-title">
+                <img class="game-logo" src="/assets/cozy-cockpit/logo.webp" width="800" height="194" alt="Cozy Cockpit" />
+              </h3>
+              <p class="game-tagline">COZY FLIGHTS. CURIOUS SIGHTS.</p>
+            </div>
+            <img
+              class="game-aircraft"
+              src="/assets/cozy-cockpit/aircraft.webp"
+              width="800"
+              height="276"
+              alt="An orange and white Cozy Airways aircraft soaring above a moonlit landscape"
+            />
+          </a>
 
           <div class="game-details">
-            <img
-              class="game-logo"
-              src="/assets/cozy-cockpit-logo.png"
-              width="1742"
-              height="560"
-              alt="Cozy Cockpit"
-            />
-            <span class="game-description">
-              A cozy observation adventure, where the journey is the destination.
-            </span>
-            <span class="game-cta">VISIT WEBSITE</span>
+            <p class="game-description">A cozy observation adventure.<br />The plane flies itself. You enjoy the view.</p>
+            <div class="game-actions">
+              <a class="game-cta" href="https://store.steampowered.com/app/5251280/Cozy_Cockpit/">
+                <img src="/assets/social/steam.svg" width="24" height="24" alt="" aria-hidden="true" />
+                Wishlist on Steam
+              </a>
+              <a class="game-website" href="https://cozycockpit.com/">Visit website <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
-        </a>
+        </article>
       </section>
 
       <footer class="portal-footer">
@@ -79,6 +97,15 @@
             aria-label="Email MR_FUTURE GAMES"
           >
             <img src="/assets/mail.svg" width="36" height="26" alt="" aria-hidden="true" />
+          </a>
+          <a
+            class="social-link social-link--steam"
+            href="https://store.steampowered.com/search/?developer=MR%20FUTURE%20GAMES"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MR FUTURE GAMES on Steam"
+          >
+            <img src="/assets/social/steam.svg" width="24" height="24" alt="" aria-hidden="true" />
           </a>
           <a
             class="social-link social-link--itchio"
